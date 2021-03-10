@@ -1,0 +1,19 @@
+.Task {
+  width: 95%;
+  padding: 1rem;
+  background-color: #666666;
+  border-color: #333;
+  border-radius: 4px;
+  margin: 1rem auto;
+  text-align: left;
+  cursor: pointer;
+  h5 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h6 {
+    margin-top: 1rem;
+    font-size: 1.8rem;
+  }
+}

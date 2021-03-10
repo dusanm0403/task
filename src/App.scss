@@ -1,0 +1,28 @@
+.App {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #000;
+  min-height: 100vh;
+  height: 100vh;
+
+  .Tasks {
+    margin-top: 2rem;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .Create {
+    width: 8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    background-color: #d4d4d4;
+    border: 2px solid #fff;
+    color: #000;
+  }
+}
