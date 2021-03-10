@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./TaskForm.scss";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
@@ -19,6 +19,7 @@ const TaskForm: React.FC<Props> = ({
   currentValues,
   setCurrentValues,
 }) => {
+  const formWrapperRef = useRef(null);
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
     description: Yup.string().required(),
@@ -47,8 +48,24 @@ const TaskForm: React.FC<Props> = ({
     },
   });
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        formWrapperRef.current &&
+        !formWrapperRef.current.contains(event.target)
+      ) {
+        setShowForm(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    //eslint-disable-next-line
+  }, [formWrapperRef]);
+
   return (
-    <div className="TaskForm">
+    <div ref={formWrapperRef} className="TaskForm">
       <div className="Form">
         <h5>{currentValues ? "Edit task" : "Create task"}</h5>
         <div className="Divider" />
@@ -112,3 +129,6 @@ const TaskForm: React.FC<Props> = ({
 };
 
 export default TaskForm;
+function useEffect(arg0: () => () => void, arg1: any[]) {
+  throw new Error("Function not implemented.");
+}
